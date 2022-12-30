@@ -65,6 +65,7 @@ public class logic {
 					stateArray2[i][j] = Cell.State.TARGET;
 				}
 				if (stateArray1[i][j] == Cell.State.LIVE) {
+					//move towards target if exists
 					if (!targetPosMap.isEmpty()) {
 						int[] loc = {i, j};
 						double[] unitDir = VectorFunctions.findUnitDirMap(loc, targetPosMap);
@@ -92,7 +93,7 @@ public class logic {
 							averagePos[0] += i;
 							averagePos[1] += j;
 						}
-					} else {
+					} else { //else move towards average position
 						int[] loc = {i, j};
 						double[] unitDir = VectorFunctions.findUnitDirPos(loc, averagePos);
 						double[] finalDir = VectorFunctions.findFinalDir(unitDir);
@@ -139,6 +140,7 @@ public class logic {
 		t.start();
 	}
 	
+	//for recursion
 	static class updateRunningActionListener implements ActionListener {
 		private Cell[][] cellArray;
 		private Cell.State[][] stateArray1;
@@ -203,6 +205,7 @@ public class logic {
 		return dir;
 	}
 	
+	//movement alterations towards target
 	private static double[] targetingMovement(double dir[], double dist, GridVals gridVals) {
 		//max dist on screen from corner to corner
 		double maxDist = Math.sqrt(Math.pow(gridVals.getWidthArr(), 2) + Math.pow(gridVals.getHeightArr(), 2));
