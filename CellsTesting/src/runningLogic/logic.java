@@ -120,10 +120,8 @@ public class logic {
 		//update graphics based on array values
 		for (int i = 0; i < cellArray.length; i++) {
 			for (int j = 0; j < cellArray[i].length; j++) {
-				if (stateArray2[i][j] == Cell.State.TARGET) {
-					cellArray[i][j].setState(Cell.State.TARGET);
-				} else if (stateArray2[i][j] == Cell.State.LIVE) {
-					cellArray[i][j].setState(Cell.State.LIVE);
+				if (stateArray2[i][j] != null) {
+					cellArray[i][j].setState(stateArray2[i][j]);
 				} else {
 					cellArray[i][j].reset();
 				}
